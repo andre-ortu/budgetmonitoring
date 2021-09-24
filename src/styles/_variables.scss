@@ -1,0 +1,33 @@
+$body-bg: #f5f4f4;
+
+// Typography
+$font-family-sans-serif: 'Hero', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 0.9;
+$color-label: #565656;
+$color-input: rgb(96, 98, 102);
+$color-placeholder: rgb(185, 188, 195);
+$font-size-label: .7rem;
+$line-height-label: .7rem;
+$font-size-input: .9rem;
+$line-height-input: 1rem;
+
+// Colors
+$blue: #43afea;
+$blue--dark: #007dbb;
+$green: #8cc63f;
+$grey--light: rgb(220, 223, 230);
+$grey: #929292;
+$red: #7A0200;
+$white: #ffffff;
+
+// Gradient
+
+$gradient: linear-gradient(to right, $blue--dark, $blue);
+
+//breakpoints
+$phone: 600px;
+$small-tablet: 768px;
+$large-tablet: 992px;
+$large-device: 1200;
+

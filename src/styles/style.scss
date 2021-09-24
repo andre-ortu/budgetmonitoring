@@ -1,0 +1,19 @@
+@import '_variables.scss';
+@import 'layout';
+@import 'spacing.scss';
+@import 'fonts.scss';
+
+html, body {
+    font-family: 'Hero', sans-serif;
+    background-color: $body-bg;
+    margin: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+html, body {
+    font-family: 'Hero', sans-serif;
+    background-color: $body-bg;
+    margin: 0;
+    height: 100vh;
+}
