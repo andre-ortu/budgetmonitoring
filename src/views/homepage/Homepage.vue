@@ -32,18 +32,22 @@
                 <el-col :md="8">
                     <el-card>
                         Ultime 10 spese
-                        <div v-for="item in latest" :key="item.id">
-                            <hr>
-                            <div class="d-flex" style="justify-content: space-between; margin-top: auto; margin-bottom: auto">
-                                <div>
-                                    <span class="expenseName">{{ item.name}}</span><br>
-                                    <span class="expenseCategory">{{ item.category.name }}</span>
-                                </div>
-                                <div class="expenseAmount">
-                                    {{ item.amount }} €
+                        <div v-if="latest.length">
+                            <div v-for="item in latest" :key="item.id">
+                                <hr>
+                                <div class="d-flex" style="justify-content: space-between; margin-top: auto; margin-bottom: auto">
+                                    <div>
+                                        <span class="expenseName">{{ item.name}}</span><br>
+                                        <span class="expenseCategory">{{ item.category.name }}</span>
+                                    </div>
+                                    <div class="expenseAmount">
+                                        {{ item.amount }} €
+                                    </div>
                                 </div>
                             </div>
-
+                        </div>
+                        <div v-else>
+                            <data-not-found></data-not-found>
                         </div>
                     </el-card>
                 </el-col>
@@ -55,9 +59,10 @@
 <script>
 import BarChart from "@/components/BarChart";
 import {mapActions, mapGetters} from "vuex";
+import DataNotFound from "@/components/DataNotFound";
 export default {
     name: "Homepage",
-    components: {BarChart},
+    components: {DataNotFound, BarChart},
     data() {
         return {
             budget: {},
