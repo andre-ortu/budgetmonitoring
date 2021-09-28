@@ -14,20 +14,24 @@
                         </el-select>
                     </el-form-item>
                 </el-form>
-                <div>
-                    <el-button type="primary" @click="addExpense">Aggiungi Spesa</el-button>
-                </div>
+
+            </div>
+            <div class="d-flex">
+                <el-button type="primary" @click="addExpense">Aggiungi Spesa</el-button>
+                <el-button type="primary" @click="addBudget">Aggiungi Budget</el-button>
             </div>
         </div>
-
-
         <hr>
-            <el-row :gutter="20">
+        <el-row :gutter="20">
                 <el-col :md="16">
-                    <el-card>
+                    <el-card style="margin-bottom: 1rem">
                         Budget Diviso Per Settimana
                         <bar-chart v-if="show.chart" :d="chartdata"></bar-chart>
                     </el-card>
+                    <expense-week
+                        v-if="show.expensesWeek"
+                        :budget="budget"
+                    />
                 </el-col>
                 <el-col :md="8">
                     <el-card>
@@ -52,6 +56,8 @@
                     </el-card>
                 </el-col>
             </el-row>
+        <hr>
+
     </div>
 
 </template>
@@ -60,16 +66,19 @@
 import BarChart from "@/components/BarChart";
 import {mapActions, mapGetters} from "vuex";
 import DataNotFound from "@/components/DataNotFound";
+import ExpenseWeek from "@/components/ExpenseWeek";
+
 export default {
     name: "Homepage",
-    components: {DataNotFound, BarChart},
+    components: {ExpenseWeek, DataNotFound, BarChart},
     data() {
         return {
             budget: {},
             latest: [],
             chartdata: {},
             show: {
-                chart: false
+                chart: false,
+                expensesWeek: false
             }
         }
     },
@@ -105,6 +114,13 @@ export default {
                 'component': 'add-expense',
                 'title': 'Aggiungi Spesa'
             });
+        },
+        addBudget() {
+            this.setDrawer({
+                'show': true,
+                'component': 'add-budget',
+                'title': 'Aggiungi Budget'
+            });
         }
     },
     watch: {
@@ -114,6 +130,7 @@ export default {
         budget() {
             this.getWeekBudget();
             this.getLatestExpenses();
+            this.show.expensesWeek = true;
         }
     }
 }
