@@ -158,9 +158,9 @@ export default {
                             sums[index] = '€ ' + values.reduce((prev, curr) => {
                                 const value = Number(curr);
                                 if (!isNaN(value)) {
-                                    return prev - curr;
+                                    return (prev - curr).toFixed(2);
                                 } else {
-                                    return prev;
+                                    return prev.toFixed(2);
                                 }
                             });
                         } else {
