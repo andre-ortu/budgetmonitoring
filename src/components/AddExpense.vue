@@ -89,6 +89,7 @@ export default {
         },
         storeExpense() {
             this.setPrimaryLoading(true);
+            this.expense.date = this.$moment(this.expense.date).format('YYYY-MM-DD');
             this.$http.post('/api/expense', this.expense)
                 .then(() => {
                     this.$message.success('Spesa Inserita Con Successo!');
